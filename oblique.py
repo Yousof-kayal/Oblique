@@ -68,7 +68,7 @@ class TheGame():
                 self.render_text("Press 1 explore, 2 to search for a window. ", 15, self.game_font, self.white, self.mid_WIDTH, 400)
             
             if self.user_text == "111":
-                self.render_text("You wander aimlessly for what feels like hours, nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("You wander aimlessly for hours, nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
                 self.render_text("Everything looks the same.", 20, self.game_font, self.magenta, self.mid_WIDTH, 140)
                 self.render_text("The floors, ceilings, doors, walls. They all look the same.", 15, self.game_font, self.white, self.mid_WIDTH, 180)
                 self.render_text("The thought keeps popping up in your mind.", 15, self.game_font, self.white, self.mid_WIDTH, 210)
@@ -101,18 +101,20 @@ class TheGame():
                 self.render_text("A fall from here would still kill you.", 20, self.game_font, self.crimson, self.mid_WIDTH, 190)
                 self.render_text("After close inspection of the window, you find the lock has been opened already.", 15, self.game_font, self.white, self.mid_WIDTH, 230)
                 self.render_text("You open the window and start climbing down.", 15, self.game_font, self.white, self.mid_WIDTH, 260)
-                self.render_text("You smell something swamp-like", 15, self.game_font, self.white, self.mid_WIDTH, 260)
+                self.render_text("You smell something disgusting behind you...", 15, self.game_font, self.white, self.mid_WIDTH, 290)
                 self.render_text("Press 1 to continue.", 15, self.game_font, self.white, self.mid_WIDTH, 400)
                 
             if self.user_text == "1121":
-                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
-                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
-                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                self.render_text("Curious, you look behind you. ", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("You are met with a creature with three arms and two legs with a decaying body.", 15, self.game_font, self.white, self.mid_WIDTH, 130)
+                self.render_text("It tries to grab you, but you jump onto a trash container.", 15, self.game_font, self.white, self.mid_WIDTH, 160)
+                self.render_text("You live for another day", 20, self.game_font, self.magenta, self.mid_WIDTH, 200)
+                self.render_text("Press 1 to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
                 
             
             #Go back and rest: 1112
             if self.user_text == "1112":
-                self.render_text("You wander aimlessly for a, nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("You wander aimlessly for hours, nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
                 self.render_text("Everything looks the same.", 20, self.game_font, self.magenta, self.mid_WIDTH, 140)
                 self.render_text("The floors, ceilings, doors, walls. They all look the same.", 15, self.game_font, self.white, self.mid_WIDTH, 180)
                 self.render_text("The thought keeps popping up in your mind.", 15, self.game_font, self.white, self.mid_WIDTH, 210)
@@ -122,9 +124,12 @@ class TheGame():
             
             #leave start branch: 12
             if self.user_text == "12":
-                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
-                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
-                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                self.render_text("You find a window in the same room you woke up in.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("The sky has a slight crimson tint.", 15, self.game_font, self.crimson, self.mid_WIDTH, 140)
+                self.render_text("Your head is fuzzy and you don't know how you got here.", 15, self.game_font, self.white, self.mid_WIDTH, 170)
+                self.render_text("After close inspection of the window, you find that it is locked by a padlock. ", 15, self.game_font, self.white, self.mid_WIDTH, 200)
+                self.render_text("You feel confident in your ability in breaking the glass though.", 15, self.game_font, self.white, self.mid_WIDTH, 230)
+                self.render_text("Break it? Press 1 for yes, press 2 for no.", 15, self.game_font, self.white, self.mid_WIDTH, 400)
                  
             if self.user_text == "122":
                 self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
