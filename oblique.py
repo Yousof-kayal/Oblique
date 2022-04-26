@@ -1,5 +1,6 @@
 import pygame as pg
 from mainmenu import MainMenu, Credits
+import time
 
 class TheGame():
     def __init__(self):
@@ -18,45 +19,114 @@ class TheGame():
 
         self.display = pg.Surface((self.display_WIDTH,self.display_HEIGHT))
         self.window = pg.display.set_mode(((self.display_WIDTH,self.display_HEIGHT)))
-        self.black, self.white, self.magenta = (0,0,0), (255,255,255), (90,35,175)
+        self.black, self.white, self.magenta, self.crimson = (0,0,0), (255,255,255), (90,35,175), (87,15,20)
 
         self.user_text = ''
-        self.cursor = 0
-        self.next_update= 0
-        
         
         self.menu_font = 'assets/PoppkornRegular-MzKY.ttf'
         self.game_font = 'assets/PressStart2P-vaV7.ttf'
-        self.dg_font = pg.font.Font(self.game_font, 20)
-        self.dg_image   = self.dg_font.render( '*', True, self.black)
-        
         
         self.main_menu = MainMenu(self)
         self.credits = Credits(self)
         self.current_menu = MainMenu(self)
 
 
-    def main_loop(self):
+    def main_loop(self): 
         """
         The game loop, this is where the actual game lives.
         """
         while self.start:
-
             self.listen_event()
 
             if self.back_KEY:
                 self.start = False
                 self.user_text = ''
-                self.dg_image.fill(self.black) 
-            self.listen_event()
+
             self.display.fill(self.black)
             
-            self.render_text(self.user_text, 15 ,self.game_font, self.white, self.mid_WIDTH-200, self.mid_HEIGHT+200)
-            if self.user_text == "yes":
-                self.render_text("hello world", 15, self.game_font, self.white, 100, 100)
-            
-            
+            self.render_text(self.user_text, 15 ,self.game_font, self.white, self.mid_WIDTH, self.mid_HEIGHT+200)
 
+            #No input output
+            if self.user_text == "":
+                self.render_text("You wake up in a hospital bed...", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("Looking around to the left and right, you are all alone.", 15, self.game_font, self.white, self.mid_WIDTH, 130)
+                self.render_text("Press 1 to Continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+
+            #intro sequence
+            if self.user_text == "1":
+                self.render_text("There are tubes connected into your skin.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("You pull them out, and get out of the bed.", 15, self.game_font, self.white, self.mid_WIDTH, 130)
+                self.render_text("The hospital is empty... Do you find a way out, or explore?", 20, self.game_font, self.magenta, self.mid_WIDTH, 160)
+                self.render_text("Press 1 to explore, press 2 to leave", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+            
+            #explore start branch: 11     
+            if self.user_text == "11":
+                self.render_text("You follow the exit signs scattered all over.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("As you continue to search for a way out, you notice something.", 15, self.game_font, self.white, self.mid_WIDTH, 130)
+                self.render_text("You've been going in circles", 20, self.game_font, self.magenta, self.mid_WIDTH, 170)
+                self.render_text("You pause, take a deep breath, and think of two solutions:", 15, self.game_font, self.white, self.mid_WIDTH, 210)
+                self.render_text("Ignore the signs and explore, or find a window.", 15, self.game_font, self.white, self.mid_WIDTH, 240)
+                self.render_text("Press 1 explore, 2 to search for a window. ", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+            
+            if self.user_text == "111":
+                self.render_text("You wander aimlessly, nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("Everything looks the same.", 20, self.game_font, self.magenta, self.mid_WIDTH, 140)
+                self.render_text("The floors, ceilings, doors, walls. They all look the same.", 15, self.game_font, self.white, self.mid_WIDTH, 180)
+                self.render_text("The thought keeps popping up in your mind.", 15, self.game_font, self.white, self.mid_WIDTH, 210)
+                self.render_text("'How long have I been here? Is this the rest of my life?'", 15, self.game_font, self.mid_WIDTH, 240)
+                self.render_text("You realize that if you stay any longer, you will be driven to insanity.", 15, self.game_font, self.white, self.mid_WIDTH, 270)
+                self.render_text("Press 1 to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+            
+            if self.user_text == "1111":
+                self.render_text("You wander aimlessly , nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("Everything looks the same.", 15, self.game_font, self.magenta, self.mid_WIDTH, 130)
+                self.render_text("The floors, ceilings, doors, walls. They all look the same.", 15, self.game_font, self.white, self.mid_WIDTH, 160)
+                self.render_text("Thoughts keep popping up in your mind.", 15, self.game_font, self.white, self.mid_WIDTH, 190)
+                self.render_text("'Is this the rest of my life?'", 15, self.game_font, self.white, self.mid_WIDTH, 220)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+            
+            if self.user_text == "112":
+                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                
+            if self.user_text == "1121":
+                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                
+            
+            
+            #leave start branch: 12
+            if self.user_text == "12":
+                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                 
+            if self.user_text == "122":
+                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                 
+            
+            if self.user_text == "121":
+                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                
+                
+            if self.user_text == "1221":
+                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                
+                
+            if self.user_text == "1222":
+                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                
+           
             self.window.blit(self.display,(0,0))
             pg.display.update()
 
