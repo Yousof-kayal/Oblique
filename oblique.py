@@ -73,21 +73,33 @@ class TheGame():
                 self.render_text("Everything looks the same.", 20, self.game_font, self.magenta, self.mid_WIDTH, 140)
                 self.render_text("The floors, ceilings, doors, walls. They all look the same.", 15, self.game_font, self.white, self.mid_WIDTH, 180)
                 self.render_text("The thought keeps popping up in your mind.", 15, self.game_font, self.white, self.mid_WIDTH, 210)
-                self.render_text("'How long have I been here? Is this the rest of my life?'", 15, self.game_font, self.mid_WIDTH, 240)
+                self.render_text("'How long have I been here? Is this the rest of my life?'", 15, self.game_font, self.white, self.mid_WIDTH, 240)
                 self.render_text("You realize that if you stay any longer, you will be driven to insanity.", 15, self.game_font, self.white, self.mid_WIDTH, 270)
-                self.render_text("Press 1 to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                self.render_text("Press 1 to keep wandering, 2 to go back and rest.", 15, self.game_font, self.white, self.mid_WIDTH, 400)
             
             if self.user_text == "1111":
-                self.render_text("You wander aimlessly , nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
-                self.render_text("Everything looks the same.", 15, self.game_font, self.magenta, self.mid_WIDTH, 130)
-                self.render_text("The floors, ceilings, doors, walls. They all look the same.", 15, self.game_font, self.white, self.mid_WIDTH, 160)
-                self.render_text("Thoughts keep popping up in your mind.", 15, self.game_font, self.white, self.mid_WIDTH, 190)
-                self.render_text("'Is this the rest of my life?'", 15, self.game_font, self.white, self.mid_WIDTH, 220)
-                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                self.render_text("Your eyes are starting to fool you.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("Things that previously weren't there are appearing.", 15, self.game_font, self.magenta, self.mid_WIDTH, 130)
+                self.render_text("Shadowy figures zip around your surroundings.", 15, self.game_font, self.white, self.mid_WIDTH, 160)
+                self.render_text("You assume that they are just hallucinations", 15, self.game_font, self.white, self.mid_WIDTH, 190)
+                self.render_text("But they are real...", 20, self.game_font, self.crimson, self.mid_WIDTH, 230)
+                self.render_text("You have to fight, there is no way out.", 15, self.game_font, self.white, self.mid_WIDTH, 270)
+                self.render_text("Press 1 fight. ", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                
+            if self.user_text == "11111":
+                self.render_text("You are weak, and frail", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("But nonetheless, you try to fight back.", 15, self.game_font, self.white, self.mid_WIDTH, 130)
+                self.render_text("The shadowy figures zip left and right", 15, self.game_font, self.white, self.mid_WIDTH, 160)
+                self.render_text("With no effort, they strike a vital organ and watch you fall to the ground.", 15, self.game_font, self.white, self.mid_WIDTH, 190)
+                self.render_text("You died. Game Over", 25, self.game_font, self.crimson, self.mid_WIDTH, 230)
+                
             
+            #search for a window: 112
             if self.user_text == "112":
-                self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
-                self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("You remember there was a window in the room you woke up in and backtrack.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("You find the room and casually walk towards it.", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("As you walk, your heart grows uneasy", 15, self.game_font, self.white, self.mid_WIDTH, 120)
+                self.render_text("", 15, self.game_font, self.white, self.mid_WIDTH, 120)
                 self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
                 
             if self.user_text == "1121":
@@ -96,6 +108,15 @@ class TheGame():
                 self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
                 
             
+            #Go back and rest: 1112
+            if self.user_text == "1112":
+                self.render_text("You wander aimlessly, nothing seems to catch your attention.", 15, self.game_font, self.white, self.mid_WIDTH, 100)
+                self.render_text("Everything looks the same.", 20, self.game_font, self.magenta, self.mid_WIDTH, 140)
+                self.render_text("The floors, ceilings, doors, walls. They all look the same.", 15, self.game_font, self.white, self.mid_WIDTH, 180)
+                self.render_text("The thought keeps popping up in your mind.", 15, self.game_font, self.white, self.mid_WIDTH, 210)
+                self.render_text("'How long have I been here? Is this the rest of my life?'", 15, self.game_font, self.white, self.mid_WIDTH, 240)
+                self.render_text("You realize that if you stay any longer, you will be driven to insanity.", 15, self.game_font, self.white, self.mid_WIDTH, 270)
+                self.render_text("Press 1 to keep wandering, 2 to go back and rest.", 15, self.game_font, self.white, self.mid_WIDTH, 400)
             
             #leave start branch: 12
             if self.user_text == "12":
