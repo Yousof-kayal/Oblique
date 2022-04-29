@@ -1,10 +1,10 @@
 import pygame as pg
-from mainmenu import MainMenu, Credits
+from titlescreen import TitleScreen, Credits
 
 class TheGame():
     def __init__(self):
         """
-        Initializing the window, flags, the clock, and keystrokes for The Game Class
+        Initializing the window, flags, and keystrokes for The Game Class
         """
         pg.init()
         pg.display.set_caption('OBLIQUE by YOUSOF KAYAL')
@@ -25,9 +25,9 @@ class TheGame():
         self.menu_font = 'assets/PoppkornRegular-MzKY.ttf'
         self.game_font = 'assets/PressStart2P-vaV7.ttf'
         
-        self.main_menu = MainMenu(self)
+        self.title_screen = TitleScreen(self)
         self.credits = Credits(self)
-        self.current_menu = MainMenu(self)
+        self.current_menu = self.title_screen
 
 
     def main_loop(self): 
@@ -130,31 +130,29 @@ class TheGame():
                 self.render_text("After close inspection of the window, you find that it is locked by a padlock. ", 15, self.game_font, self.white, self.mid_WIDTH, 200)
                 self.render_text("You feel confident in your ability in breaking the glass though.", 15, self.game_font, self.white, self.mid_WIDTH, 230)
                 self.render_text("Break it? Press 1 for yes, press 2 for no.", 15, self.game_font, self.white, self.mid_WIDTH, 400)
-                 
+            
+            #Don't break the window and find another way: 122    
             if self.user_text == "122":
                 self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
                 self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
                 self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
-                 
-            
+            #Break the window and climb out: 121
             if self.user_text == "121":
                 self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
                 self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
                 self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
-                
-                
+            
+            
             if self.user_text == "1221":
                 self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
                 self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
-                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
-                
-                
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)    
             if self.user_text == "1222":
                 self.render_text("Level 1 Please enter you name", 15, self.game_font, self.white, self.mid_WIDTH, 100)
                 self.render_text("welcome to level 1", 15, self.game_font, self.white, self.mid_WIDTH, 120)
-                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)
+                self.render_text("Press N to continue", 15, self.game_font, self.white, self.mid_WIDTH, 400)  
                 
-           
+                
             self.window.blit(self.display,(0,0))
             pg.display.update()
 

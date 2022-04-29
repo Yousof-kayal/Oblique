@@ -1,9 +1,9 @@
 import pygame as pg
 
-class MainMenu():
+class TitleScreen():
     def __init__(self,oblique):
         """
-        Initializing Main Menu Class
+        Initializing Title Screen Class
 
         Args:
             oblique (file): Contains "TheGame" Class, inheriting the contents
@@ -87,7 +87,7 @@ class MainMenu():
                 self.oblique.running, self.oblique.start = False, False
             self.run_display= False
                 
-class Credits():
+class Credits(TitleScreen):
     def __init__(self, oblique):
         self.oblique = oblique
         self.run_display = True
@@ -97,12 +97,10 @@ class Credits():
         while self.run_display:
             self.oblique.listen_event()
             if self.oblique.back_KEY or self.oblique.start_KEY:
-                self.oblique.current_menu = self.oblique.main_menu
+                self.oblique.current_menu = self.oblique.title_screen
                 self.run_display = False
             self.oblique.display.fill(self.oblique.black)
             self.oblique.render_text('Credits', 100, self.oblique.menu_font, self.oblique.white, self.oblique.mid_WIDTH, self.oblique.mid_HEIGHT - 20)
             self.oblique.render_text('By Yousof Kayal', 50, self.oblique.menu_font, self.oblique.magenta, self.oblique.mid_WIDTH, self.oblique.mid_HEIGHT +40)
-            self.oblique.window.blit(self.oblique.display,(0,0))
-            pg.display.update()
-            self.oblique.reset_key()
+            self.blit_screen()
 
