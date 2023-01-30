@@ -1,3 +1,3 @@
 # Oblique
-Text based RPG
+Text based choice game
 WIP
