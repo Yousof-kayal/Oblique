@@ -11,7 +11,7 @@ A narrative-driven psychological horror game where every choice leads deeper int
 ## 🔧 Prerequisites
 
 - Python 3.6 or higher
-- Pygame 2.1.2
+- Pygame 2.6.0
 
 ## 💻 Installation
 
