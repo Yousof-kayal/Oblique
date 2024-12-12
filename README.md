@@ -1,19 +1,8 @@
 # OBLIQUE
 
-A narrative-driven psychological horror game where every choice leads deeper into the mystery of Project OBLIQUE. You wake up in an abandoned hospital, but nothing is quite what it seems. Each playthrough reveals new layers of truth - are you the patient, or something else entirely?
+A narrative-driven psychological horror game.
 
-## 🎮 Features
-
-- Branching narrative with multiple endings
-- Atmospheric text-based storytelling
-- Dynamic choice system
-
-## 🔧 Prerequisites
-
-- Python 3.6 or higher
-- Pygame 2.6.0
-
-## 💻 Installation
+## Installation
 
 1. Clone the repository:
 ```bash
@@ -36,11 +25,6 @@ pip install -r requirements.txt
 ```bash
 python oblique.py
 ```
-
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page]().
 
 
 ## 📄 License
