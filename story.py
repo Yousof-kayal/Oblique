@@ -140,8 +140,8 @@ def create_oblique_story(game):
     explore_follow_signs.choices[0]["node"] = keep_wandering
     
     # Fight path - death ending
-    fight_ending = StoryNode("You are weak, and frail\n\nBut nonetheless, you try to fight back.\n\nThe shadowy figures zip left and right\n\nWith no effort, they strike a vital organ and watch you fall to the ground.", color=crimson, font_size=20)
-    fight_ending.add_choice("Game Over", None)  # End node, no choices
+    fight_ending = StoryNode("You are weak, and frail\n\nBut nonetheless, you try to fight back.\n\nThe shadowy figures zip left and right\n\nWith no effort, they strike a vital organ,\nand watch you fall to the ground.", color=crimson, font_size=20)
+    # End node - no choices
     
     # Link fight ending
     keep_wandering.choices[0]["node"] = fight_ending
@@ -198,14 +198,14 @@ def create_oblique_story(game):
     
     # True climax
     true_climax = StoryNode("As you follow the officer, something catches your eye.\n\nHis reflection in a window shows no face.\n\nYou try to run, but more officers appear.\n\nTheir badges all read: PROJECT OBLIQUE", 20, crimson)
-    true_climax.add_choice("End", None)  # End node
+    # End node - no choices
     
     # Link from meet officer
     meet_officer.choices[0]["node"] = true_climax
     
     # City exploration
     city_exploration = StoryNode("The city seems frozen in time.\n\nStore windows are dusty but intact.\n\nYou find a newspaper dated 47 days ago:\n\n'MIRACLE CURE PROMISES IMMORTALITY'", color=magenta)
-    city_exploration.add_choice("End", None)  # End node
+    # End node - no choices
     
     # Link from empty streets
     empty_streets.choices[1]["node"] = city_exploration
@@ -251,7 +251,7 @@ def create_oblique_story(game):
     
     # Convergence point
     convergence = StoryNode("Your memories flood back all at once.\n\nYou're not a patient. You never were.\n\nYou're the original researcher of Project OBLIQUE.\n\nThe one who discovered that immortality had a price:", color=crimson)
-    convergence.add_choice("End", None)  # End node
+    # End node - no choices
     
     # Link to convergence from both paths
     medical_bay.choices[0]["node"] = convergence
@@ -288,14 +288,14 @@ def create_oblique_story(game):
     
     # Protocol initiation
     protocol_wake = StoryNode("'WAKE protocol initiated'\n\nYou hear alarms blaring throughout the facility.\n\nThrough the glass, you watch as all 47 versions of you\n\nBegin to wake up simultaneously.", color=crimson)
-    protocol_wake.add_choice("End", None)  # End node
+    # End node - no choices
     
     # Link from research terminal
     research_terminal.choices[0]["node"] = protocol_wake
     
     # Look for another exit
     another_exit = StoryNode("You turn away from the window to search elsewhere.\n\nThe room suddenly feels different - older, abandoned.\n\nDust covers everything, years worth of it.\n\nThis isn't the same room you woke up in.", color=crimson)
-    another_exit.add_choice("End", None)  # End node
+    # End node - no choices
     
     # Link from examine padlock
     examine_padlock.choices[1]["node"] = another_exit

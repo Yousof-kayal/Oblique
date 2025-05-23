@@ -40,8 +40,15 @@ class TheGame():
             self.listen_event()
 
             if self.back_KEY:
-                self.start = False
-                self.story_tree.reset()  # Reset story when exiting game
+                if self.story_tree.is_end_node():
+                    # If at an ending, return to title screen
+                    self.start = False
+                    self.story_tree.reset()
+                    self.current_menu = self.title_screen
+                else:
+                    # Otherwise just exit to title screen
+                    self.start = False
+                    self.story_tree.reset()
 
             self.display.fill(self.black)
             
@@ -51,7 +58,13 @@ class TheGame():
             elif self.down_KEY:
                 self.story_tree.move_selection_down()
             elif self.start_KEY:
-                self.story_tree.make_choice()
+                if self.story_tree.is_end_node():
+                    # If at an ending, return to title screen
+                    self.start = False
+                    self.story_tree.reset()
+                    self.current_menu = self.title_screen
+                else:
+                    self.story_tree.make_choice()
             
             # Get current node text and render it
             self.render_story_node()
@@ -66,23 +79,36 @@ class TheGame():
     
     def render_story_node(self):
         """
-        Render the text of the current story node
+        Render the text of the current story node with line-based coloring
         """
+        if not self.story_tree.current_node:
+            return
+        
         text = self.story_tree.get_current_text()
-        color = self.story_tree.get_node_color() or self.white
         font_size = self.story_tree.get_node_font_size() or 15
         
-        # Split text by newline and render each line
+        # Split text by newline and render each line with appropriate color
         lines = text.split('\n')
         y_pos = 100
         for line in lines:
             if line:  # Only render non-empty lines
-                self.render_text(line, font_size, self.game_font, color, self.mid_WIDTH, y_pos)
+                # Determine color based on line content
+                line_color = self.white  # Default neutral
+                line_lower = line.lower()
+                
+                # Crimson for danger/shock content
+                if any(word in line_lower for word in ['kill', 'death', 'die', 'blood', 'strike', 'vital organ', 'fall', 'creature', 'grab', 'decaying', 'crimson', 'shatter', 'darkness', 'evacuated', 'breach', 'alarms', 'warning', 'impossible', 'abandoned', 'frozen']):
+                    line_color = self.crimson
+                # Magenta for important information
+                elif any(word in line_lower for word in ['project oblique', 'tubes', 'hospital', 'empty', 'circles', 'shadows', 'figures', 'police', 'report', 'containment', 'cure', 'immortality', 'researcher', 'memories', 'terminal', 'protocol', 'subject', 'partition', 'consciousness', 'versions', 'reflection', 'badges']):
+                    line_color = self.magenta
+                
+                self.render_text(line, font_size, self.game_font, line_color, self.mid_WIDTH, y_pos)
                 y_pos += 30
     
     def render_choices(self):
         """
-        Render the available choices with keyboard selection
+        Render the available choices with keyboard selection using square cursor
         """
         choices = self.story_tree.get_current_choices()
         if not choices:
@@ -92,14 +118,23 @@ class TheGame():
             return
         
         y_pos = self.display_HEIGHT - 150
+        
         for i, choice in enumerate(choices):
             # Determine color based on selection
             color = self.magenta if i == self.story_tree.selection_index else self.white
             
-            # Render choice text with cursor for selected item
-            prefix = "► " if i == self.story_tree.selection_index else "  "
-            choice_text = f"{prefix}{choice}"
-            self.render_text(choice_text, 15, self.game_font, color, self.mid_WIDTH, y_pos)
+            # Calculate text width to position cursor dynamically
+            choice_font = pg.font.Font(self.game_font, 15)
+            text_width = choice_font.size(choice)[0]
+            cursor_x = self.mid_WIDTH - (text_width // 2) - 30  # 30 pixels to the left of text
+            
+            # Render choice text
+            self.render_text(choice, 15, self.game_font, color, self.mid_WIDTH, y_pos)
+            
+            # Render square cursor for selected item
+            if i == self.story_tree.selection_index:
+                self.render_text('O', 20, self.menu_font, self.magenta, cursor_x, y_pos)
+            
             y_pos += 30
 
     def listen_event(self):
@@ -154,4 +189,5 @@ Attributing "TheGame" class to a variable (ob) and the program loop
 ob = TheGame() 
 while ob.running:
     ob.current_menu.display()
-    ob.main_loop()
+    if ob.start:  # Only run main game loop when game is started
+        ob.main_loop()
